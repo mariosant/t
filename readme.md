@@ -18,7 +18,7 @@ $ npx t
 
 ## Usage
 
-t focuses on minimality. Tests are files that export a function, most dependancies as arguments within. Here is a sample one
+t focuses on minimality. Tests are files that export a function. Here is a sample one
 
 ``` javascript
 // let's call this file index.test.js
@@ -37,29 +37,5 @@ const someModule = require('./some-module')
 module.exports = async () => {
 	const color = await someModule.fetchAsyncColor()
 	equal(color, 'red')
-}
-```
-
-Or callbacks:
-
-``` javascript
-const {equal} = require('bring-your-assertion-library')
-const someModule = require('./some-module')
-
-module.exports = async ({done}) => someModule.doSomethingAsync(done)
-```
-
-or even:
-
-``` javascript
-const {equal} = require('bring-your-assertion-library')
-const someModule = require('./some-module')
-
-module.exports = async ({pass, fail}) => {
-	if (someModule.isGood()) {
-		pass()
-	} else {
-		fail('that is no good')
-	}
 }
 ```

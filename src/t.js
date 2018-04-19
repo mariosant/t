@@ -9,7 +9,7 @@ const t = require('.');
 const mapIndexed = addIndex(map)
 
 args
-	.version('0.0.1')
+	.version(require('../package.json').version)
 	.option('--no-fail-fast', 'Do not stop testing after first fail')
 	.option('-C, --concurrency <n>', 'Specify concurrency [4]', parseInt, 4)
 	.option('-T, --timeout <ms>', 'Specify timeout [5000]', parseInt, 5000)
