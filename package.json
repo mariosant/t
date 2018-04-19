@@ -1,7 +1,7 @@
 {
-  "name": "t",
+  "name": "@mariosant/t",
   "version": "0.0.1",
-  "description": "",
+  "description": "A simple minimal test runner, that embraces a functional testing approach.",
   "main": "src/index.js",
   "bin": "src/t.js",
   "scripts": {
@@ -14,9 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^2.15.1",
-    "es6-promise-pool": "^2.5.0",
     "glob-fs": "^0.1.7",
-    "p-series": "^1.1.0",
     "p-timeout": "^2.0.1",
     "ramda": "^0.25.0"
   },
