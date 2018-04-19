@@ -1,4 +1,3 @@
-const pSeries = require('p-series')
 const {dec, ifElse} = require('ramda')
 
 const tapReporter = context => ({

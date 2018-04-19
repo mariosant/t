@@ -1,5 +1,5 @@
 const { compose, map, mergeDeepRight } = require('ramda');
-const PromisePool = require('es6-promise-pool');
+const pAll = require('p-all')
 
 const enhance = compose(
 	require('./test-enhancers/fail-fast'),
@@ -18,11 +18,10 @@ module.exports = testFns => {
 	const workerIterator = ([test, params]) => {
 		const opts = mergeWithDefaults(params)
 		const enhancedTest = enhance(test)
-		return enhancedTest(opts)
+		return () => enhancedTest(opts)
 	}
 
 	const {concurrency} = testFns[0][1]
 
-	return Promise.all(map(workerIterator, testFns))
-		.catch(() => process.exit(1))
+	return pAll(map(workerIterator, testFns), {concurrency}).catch(() => process.exit(1))
 };
