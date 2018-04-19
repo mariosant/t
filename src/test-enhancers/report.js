@@ -1,4 +1,4 @@
-const {dec, ifElse} = require('ramda')
+const { dec, ifElse } = require('ramda');
 
 const tapReporter = context => ({
 	suiteStarted: () => console.log(`0..${dec(context.totalTests)}`),
@@ -7,19 +7,21 @@ const tapReporter = context => ({
 	testFailed: err => {
 		console.log(`not ok ${context.index} - ${context.description}`);
 		console.log(err);
-		throw err
+		throw err;
 	},
-})
+});
 
 module.exports = handler => async context => {
-	const {suiteStarted, testStarted, testPassed, testFailed} = tapReporter(context)
+	const { suiteStarted, testStarted, testPassed, testFailed } = tapReporter(
+		context,
+	);
 
 	if (context.index === 0) {
-		suiteStarted()
+		suiteStarted();
 	}
 
-	testStarted()
+	testStarted();
 	return handler(context)
 		.then(testPassed)
-		.catch(testFailed)
-}
+		.catch(testFailed);
+};

@@ -6,7 +6,7 @@ const glob = require('glob-fs')({ gitIgnore: true });
 const args = require('commander');
 const t = require('.');
 
-const mapIndexed = addIndex(map)
+const mapIndexed = addIndex(map);
 
 args
 	.version(require('../package.json').version)
@@ -20,7 +20,7 @@ args
 	)
 	.parse(process.argv);
 
-const testFilenames = glob.readdirSync(args.files)
+const testFilenames = glob.readdirSync(args.files);
 
 const tests = mapIndexed(
 	(filename, i) => [
@@ -31,8 +31,8 @@ const tests = mapIndexed(
 			timeout: args.timeout,
 			description: filename,
 			totalTests: testFilenames.length,
-			index: i
-		}
+			index: i,
+		},
 	],
 	testFilenames,
 );
