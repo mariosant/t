@@ -3,7 +3,6 @@ const PromisePool = require('es6-promise-pool');
 
 const enhance = compose(
 	require('./test-enhancers/fail-fast'),
-	require('./test-enhancers/callbacks'),
 	require('./test-enhancers/timeout'),
 	require('./test-enhancers/report'),
 );

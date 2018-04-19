@@ -1,11 +1,8 @@
 const pSeries = require('p-series')
-const {ifElse} = require('ramda')
+const {dec, ifElse} = require('ramda')
 
 const tapReporter = context => ({
-	suiteStarted: () => {
-		console.log(`0..${context.totalTests - 1}`)
-	},
-	suiteEnded: () => undefined,
+	suiteStarted: () => console.log(`0..${dec(context.totalTests)}`),
 	testStarted: () => undefined,
 	testPassed: () => console.log(`ok ${context.index} - ${context.description}`),
 	testFailed: err => {
@@ -16,7 +13,7 @@ const tapReporter = context => ({
 })
 
 module.exports = handler => async context => {
-	const {suiteStarted, suiteEnded, testStarted, testPassed, testFailed} = tapReporter(context)
+	const {suiteStarted, testStarted, testPassed, testFailed} = tapReporter(context)
 
 	if (context.index === 0) {
 		suiteStarted()
