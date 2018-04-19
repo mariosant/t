@@ -1,4 +1,1 @@
-module.exports = ({ fail }) => {
-	console.log('Fail in');
-	return fail();
-};
+module.exports = ({ fail }) => Promise.reject('Fail in');

@@ -1,8 +1,8 @@
 const { compose } = require('ramda');
 
-module.exports = context =>
-	compose(
-		handler => handler(context),
+module.exports = compose(
+		require('./worker-enhancers/fail-fast'),
 		require('./worker-enhancers/callbacks'),
 		require('./worker-enhancers/timeout'),
+		require('./worker-enhancers/report'),
 	);

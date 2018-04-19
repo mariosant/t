@@ -1,7 +1,6 @@
 const delay = require('delay');
 
-module.exports = async _ => {
-	console.log('Got in');
-	await delay(1000);
-	console.log('Going out');
+module.exports = async context => {
+	await delay(1000)
+	// console.log(context)
 };

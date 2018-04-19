@@ -1,6 +1,6 @@
 const { map, mergeDeepRight } = require('ramda');
 const PromisePool = require('es6-promise-pool');
-const run = require('./worker');
+const enhance = require('./worker');
 
 const mergeWithDefaults = mergeDeepRight({
 	timeout: 5000,
@@ -9,9 +9,14 @@ const mergeWithDefaults = mergeDeepRight({
 	session: {},
 });
 
-module.exports = (params, tests) => {
-	const options = mergeWithDefaults(params);
-	const promises = map(test => run(options)(test), [...tests]);
+module.exports = testFns => {
+	const workerIterator = ([test, params]) => {
+		const opts = mergeWithDefaults(params)
+		return enhance(test)(opts)
+	}
 
-	return new PromisePool(promises, options.concurrency).start();
+	const concurrency = testFns[0][1].concurrency
+
+	return Promise.all(map(workerIterator, testFns))
+		.catch(() => process.exit(127))
 };
