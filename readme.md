@@ -18,7 +18,7 @@ $ npx t
 
 ## Usage
 
-t focuses on minimality. Tests are files that export a function, most dependancies as arguments within. Here is a sample one
+t focuses on minimality. Tests are files that export a function, most dependencies as arguments within. Here is a sample one:
 
 ``` javascript
 // let's call this file index.test.js
