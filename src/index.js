@@ -11,7 +11,6 @@ const mergeWithDefaults = mergeDeepRight({
 	timeout: 5000,
 	failFast: true,
 	concurrency: 4,
-	session: {},
 });
 
 module.exports = async testFns => {
