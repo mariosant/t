@@ -18,10 +18,10 @@ module.exports = async testFns => {
 		const opts = mergeWithDefaults(params);
 		const enhancedTest = enhance(test);
 
-		return enhancedTest(opts);
+		return () => enhancedTest(opts);
 	};
 
-	const { concurrency } = last(head(testFns) || []) || 4;
+	const { concurrency } = last(head(testFns) || []) || 1;
 
 	await pAll(map(workerIterator, testFns), { concurrency }).catch(err => {
 		console.error(err.message);
