@@ -1,6 +1,6 @@
 {
   "name": "@mariosant/t",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple minimal test runner, that embraces a functional testing approach.",
   "main": "src/index.js",
   "bin": "src/t.js",
@@ -10,7 +10,9 @@
     "prettier": "prettier **/*.js",
     "test": "node ./src/t.js --exclude 'fixtures/**'"
   },
-  "keywords": ["test"],
+  "keywords": [
+    "test"
+  ],
   "author": "Marios Antonoudiou <mariosant@sent.com>",
   "license": "ISC",
   "dependencies": {
