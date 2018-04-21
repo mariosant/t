@@ -10,13 +10,11 @@
     "prettier": "prettier **/*.js",
     "test": "node ./src/t.js --exclude 'fixtures/**'"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["test"],
+  "author": "Marios Antonoudiou <mariosant@sent.com>",
   "license": "ISC",
   "dependencies": {
     "commander": "^2.15.1",
-    "glob": "^7.1.2",
-    "glob-fs": "^0.1.7",
     "globby": "^8.0.1",
     "p-all": "^1.0.0",
     "p-timeout": "^2.0.1",

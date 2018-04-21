@@ -12,7 +12,6 @@ const mockReporter = cb =>
 	);
 
 module.exports = async () => {
-	await delay(2000)
 	const fn = report(async () => true);
 	expect(() => fn({ reporter: mockReporter(mock) }), 'to be fulfilled');
 };
