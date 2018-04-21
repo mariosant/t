@@ -1,3 +1,3 @@
-const {ifElse, prop} = require('ramda')
+const { ifElse, prop } = require('ramda');
 
-module.exports = handler => async context => await handler(context)
+module.exports = handler => async context => await handler(context);

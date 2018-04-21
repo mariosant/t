@@ -25,7 +25,7 @@ module.exports = async testFns => {
 	const { concurrency } = testFns[0][1];
 
 	await pAll(map(workerIterator, testFns), { concurrency }).catch(err => {
-		console.error(err.message)
-		process.exit(1)
+		console.error(err.message);
+		process.exit(1);
 	});
 };
