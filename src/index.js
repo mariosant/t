@@ -1,4 +1,4 @@
-const { compose, map, mergeDeepRight } = require('ramda');
+const { compose, head, last, pathOr, map, mergeDeepRight } = require('ramda');
 const pAll = require('p-all');
 
 const enhance = compose(
@@ -21,7 +21,7 @@ module.exports = async testFns => {
 		return enhancedTest(opts);
 	};
 
-	const { concurrency } = testFns[0][1];
+	const { concurrency } = last(head(testFns) || []) || 4;
 
 	await pAll(map(workerIterator, testFns), { concurrency }).catch(err => {
 		console.error(err.message);
