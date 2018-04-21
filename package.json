@@ -7,14 +7,17 @@
   "scripts": {
     "precommit": "lint-staged",
     "lint": "xo",
-    "prettier": "prettier **/*.js"
+    "prettier": "prettier **/*.js",
+    "test": "node ./src/t.js --exclude 'fixtures/**'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "commander": "^2.15.1",
+    "glob": "^7.1.2",
     "glob-fs": "^0.1.7",
+    "globby": "^8.0.1",
     "p-all": "^1.0.0",
     "p-timeout": "^2.0.1",
     "ramda": "^0.25.0"
@@ -29,6 +32,7 @@
     "prettier": "^1.10.2",
     "tap-colorize": "^1.2.0",
     "tap-markdown": "^1.2.1",
+    "unexpected": "^10.37.5",
     "xo": "^0.20.3"
   },
   "lint-staged": {

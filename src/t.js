@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { addIndex, map } = require('ramda');
-const glob = require('glob-fs')({ gitIgnore: true });
+const globby = require('globby');
 const args = require('commander');
 const t = require('.');
 
@@ -10,6 +10,7 @@ const mapIndexed = addIndex(map);
 
 args
 	.version(require('../package.json').version)
+	.option('--exclude <glob>', 'Specify which files should be excluded', 'node_modules/**/*')
 	.option('--no-fail-fast', 'Do not stop testing after first fail')
 	.option('-C, --concurrency <n>', 'Specify concurrency [4]', parseInt, 4)
 	.option('-T, --timeout <ms>', 'Specify timeout [5000]', parseInt, 5000)
@@ -20,7 +21,11 @@ args
 	)
 	.parse(process.argv);
 
-const testFilenames = glob.readdirSync(args.files);
+const testFilenames = globby.sync([
+	args.files,
+	`!node_modules/**`,
+	`!${args.exclude}`,
+])
 
 const tests = mapIndexed(
 	(filename, i) => [

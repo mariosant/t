@@ -3,8 +3,8 @@ const pAll = require('p-all');
 
 const enhance = compose(
 	require('./test-enhancers/fail-fast'),
-	require('./test-enhancers/timeout'),
 	require('./test-enhancers/report'),
+	require('./test-enhancers/promisify'),
 );
 
 const mergeWithDefaults = mergeDeepRight({
@@ -14,16 +14,18 @@ const mergeWithDefaults = mergeDeepRight({
 	session: {},
 });
 
-module.exports = testFns => {
+module.exports = async testFns => {
 	const workerIterator = ([test, params]) => {
 		const opts = mergeWithDefaults(params);
 		const enhancedTest = enhance(test);
-		return () => enhancedTest(opts);
+
+		return enhancedTest(opts);
 	};
 
 	const { concurrency } = testFns[0][1];
 
-	return pAll(map(workerIterator, testFns), { concurrency }).catch(() =>
-		process.exit(1),
-	);
+	await pAll(map(workerIterator, testFns), { concurrency }).catch(err => {
+		console.error(err.message)
+		process.exit(1)
+	});
 };
