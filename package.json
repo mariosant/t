@@ -1,6 +1,6 @@
 {
   "name": "@mariosant/t",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple minimal test runner, that embraces a functional testing approach.",
   "main": "src/index.js",
   "bin": "src/t.js",
