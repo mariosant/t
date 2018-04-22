@@ -1,3 +1,12 @@
 language: node_js
 node_js:
-  - '8'
+- '8'
+deploy:
+  provider: npm
+  email: mariosant@sent.com
+  api_key:
+    secure: lRdH7BmcLfou+Da8F0XOJZUEO25ubH4Dhn9IE9cqPZNms3J5krJngPPCSy+766DHUf69jbUZ4fMcotbqAdvz4W0cKpjor2L95XcmMlkpja8nezPHSSVDv4wKYuJxFoGBqHrjmQXV8UzRpAFq6H1sdrFexwUnuj5viZa2r7r/63GtaYg18ezH6WwlfAwBO1ecrAW/kW6CLbwbggwlMO7CNHnoyVZ1DStNAp8Gwy5v618o18t4Y45ojHgN7hio9zmogWzRo0YkmK4VvYW9K6uQ6JieYP7KrQjvjL/r0wBOHPUE6Wjcq8MEYO07HlhnHl5U21ij2ef5XD/lCszk80X3LXG3MC+pn9cSCHIoMjsYdEq69iTP0QdEWQWAkwJWOutUYSNHhbbqeOlUZXfUZ1JbxTm3GOLxMnPxpDliPZQX/jJ82OlQijrMnlxr5X+gUw/d7MRDxV4mAJnJiWu8NbGxfSdb6mQ2PHdpggczii47iRrD3+/767qpqb8eBNyZsiJztjyH+ndxLR+JrHvjIzNPxu7P6vZq3lzzlR4qDXIiBzk4DTmP138n3qNAkJZsejqJ2Owqy5ZBR8kmPHv8D81PiBcGkPfl7bqz/blnQAcgWQIWt/slgLKGS07r8wAxFN+Wh9jQVxNeaDzOEL4P4/ZYxLoBl45ieqSUZHlyPL8Rf2k=
+  on:
+    branch: master
+    tags: true
+    repo: mariosant/t
