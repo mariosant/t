@@ -1,4 +1,12 @@
-const { compose, head, ifElse, isEmpty, last, pathOr, map, mergeDeepRight } = require('ramda');
+const {
+	compose,
+	head,
+	ifElse,
+	isEmpty,
+	last,
+	map,
+	mergeDeepRight,
+} = require('ramda');
 const pAll = require('p-all');
 
 const enhance = compose(
@@ -13,14 +21,15 @@ const mergeWithDefaults = mergeDeepRight({
 	concurrency: 4,
 });
 
-const abortIfNoTests = handler => ifElse(
-	isEmpty,
-	() => {
-		console.log('No tests were provided')
-		process.exit(1)
-	},
-	handler
-)
+const abortIfNoTests = handler =>
+	ifElse(
+		isEmpty,
+		() => {
+			console.log('No tests were provided');
+			process.exit(1);
+		},
+		handler,
+	);
 
 const runTests = async testFns => {
 	const workerIterator = ([test, params]) => {
@@ -38,4 +47,4 @@ const runTests = async testFns => {
 	});
 };
 
-module.exports = abortIfNoTests(runTests)
+module.exports = abortIfNoTests(runTests);
