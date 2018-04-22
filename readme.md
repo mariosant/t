@@ -1,4 +1,5 @@
 # t
+[![npm version](https://badge.fury.io/js/%40mariosant%2Ft.svg)](https://badge.fury.io/js/%40mariosant%2Ft) [![Build Status](https://travis-ci.org/mariosant/t.svg?branch=master)](https://travis-ci.org/mariosant/t)
 
 A simple minimal test runner, that embraces a functional testing approach.
 
